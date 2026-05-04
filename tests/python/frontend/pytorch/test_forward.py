@@ -299,6 +299,22 @@ def test_forward_pixel_shuffle():
     verify_model(torch.nn.PixelShuffle(3).float().eval(), input_data=input_data)
     verify_model(torch.nn.PixelShuffle(4).float().eval(), input_data=input_data)
 
+def test_forward_blackman_window():
+    torch.set_grad_enabled(False)
+# We need __init__ because torch.blackman_window requires python time constants (int, bool) that define output shape, and __init__ is the correct place to store such compile time constants 
+    class BlackmanModule(Module):
+        def __init__(self, M, periodic):
+            super().__init__()
+            self.M = M
+            self.periodic = periodic
+
+        def forward(self):
+            return torch.blackman_window(self.M, periodic=self.periodic)
+
+    for M in [5, 10, 32]:
+        for periodic in [True, False]:
+            model = BlackmanModule(M, periodic).float().eval()
+            verify_model(model, input_data=[])
 
 @tvm.testing.uses_gpu
 def test_forward_add():

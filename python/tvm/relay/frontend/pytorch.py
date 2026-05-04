@@ -988,6 +988,51 @@ class PyTorchOpConverter:
             + _op.erf(data * _expr.const(0.5**0.5, dtype=dtype)) * _expr.const(0.5, dtype=dtype)
         )
 
+    def blackman_window(self, inputs, input_types):
+        M = _expr.const(inputs[0], "int32")
+        periodic = bool(inputs[1])
+
+        out_dtype = self.default_dtype
+        compute_dtype = "float32" if out_dtype in ("float16", "float32") else out_dtype
+
+        pi = _expr.const(math.pi, compute_dtype)
+        c0 = _expr.const(0.42, compute_dtype)
+        c1 = _expr.const(0.5, compute_dtype)
+        c2 = _expr.const(0.08, compute_dtype)
+
+        zero_i32 = _expr.const(0, "int32")
+        one_i32 = _expr.const(1, "int32")
+        one_f = _expr.const(1.0, compute_dtype)
+        two = _expr.const(2.0, compute_dtype)
+        four = _expr.const(4.0, compute_dtype)
+
+        n = _op.cast(
+            _op.arange(zero_i32, M, one_i32, dtype="int32"),
+            compute_dtype,
+        )
+
+        M_f = _op.cast(M, compute_dtype)
+        denom = M_f if periodic else _op.subtract(M_f, one_f)
+
+        cos_2pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(two, pi), n),
+                denom,
+            )
+        )
+
+        cos_4pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(four, pi), n),
+                denom,
+            )
+        )
+
+        out = _op.subtract(c0, _op.multiply(c1, cos_2pi))
+        out = _op.add(out, _op.multiply(c2, cos_4pi))
+
+        return _op.cast(out, out_dtype)
+
     def selu(self, inputs, input_types):
         data = inputs[0]
         # https://pytorch.org/docs/stable/nn.html#selu
@@ -4142,6 +4187,7 @@ class PyTorchOpConverter:
             "aten::dropout": self.dropout,
             "aten::feature_dropout": self.dropout,
             "aten::alpha_dropout": self.dropout,
+            "aten::blackman_window": self.blackman_window,
             "aten::mean": self.mean,
             "aten::chunk": self.chunk,
             "aten::unsafe_chunk": self.chunk,
