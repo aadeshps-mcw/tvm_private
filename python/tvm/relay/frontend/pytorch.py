@@ -31,7 +31,6 @@ import numpy as np
 import tvm
 from tvm.ir import IRModule
 from tvm.topi.utils import get_const_tuple
-from tvm import relay
 
 from .. import analysis as _analysis
 from .. import expr as _expr
@@ -990,48 +989,51 @@ class PyTorchOpConverter:
         )
     
     def blackman_window(self, inputs, input_types):
-        M = relay.const(inputs[0], "int32")
+        M = _expr.const(inputs[0], "int32")
         periodic = bool(inputs[1])
 
         out_dtype = self.default_dtype
         compute_dtype = "float32" if out_dtype in ("float16", "float32") else out_dtype
 
-        pi = relay.const(math.pi, compute_dtype)
-        c0 = relay.const(0.42, compute_dtype)
-        c1 = relay.const(0.5, compute_dtype)
-        c2 = relay.const(0.08, compute_dtype)
-#as every value inside a relay operator must be relay expression, not a python value, we need to make a relay.const for the values.
-        n = relay.cast(
-            relay.arange(
-                relay.const(0, "int32"),
-                M,
-                relay.const(1, "int32"),
-                dtype="int32",
-            ),
+        pi = _expr.const(math.pi, compute_dtype)
+        c0 = _expr.const(0.42, compute_dtype)
+        c1 = _expr.const(0.5, compute_dtype)
+        c2 = _expr.const(0.08, compute_dtype)
+
+        zero_i32 = _expr.const(0, "int32")
+        one_i32 = _expr.const(1, "int32")
+        one_f = _expr.const(1.0, compute_dtype)
+        two = _expr.const(2.0, compute_dtype)
+        four = _expr.const(4.0, compute_dtype)
+
+        n = _op.cast(
+            _op.arange(zero_i32, M, one_i32, dtype="int32"),
             compute_dtype,
         )
 
-        M_f = relay.cast(M, compute_dtype)
-        denom = M_f if periodic else relay.subtract(M_f, relay.const(1.0, compute_dtype))
+        M_f = _op.cast(M, compute_dtype)
+        denom = M_f if periodic else _op.subtract(M_f, one_f)
 
-        cos_2pi = relay.cos(
-            relay.divide(
-                relay.multiply(relay.multiply(relay.const(2.0, compute_dtype), pi), n),
+        cos_2pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(two, pi), n),
                 denom,
             )
         )
 
-        cos_4pi = relay.cos(
-            relay.divide(
-                relay.multiply(relay.multiply(relay.const(4.0, compute_dtype), pi), n),
+        cos_4pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(four, pi), n),
                 denom,
             )
         )
 
-        out = relay.subtract(c0, relay.multiply(c1, cos_2pi))
-        out = relay.add(out, relay.multiply(c2, cos_4pi))
+        out = _op.subtract(c0, _op.multiply(c1, cos_2pi))
+        out = _op.add(out, _op.multiply(c2, cos_4pi))
 
-        return relay.cast(out, out_dtype)
+        return _op.cast(out, out_dtype)
+
+
     
     def selu(self, inputs, input_types):
         data = inputs[0]
