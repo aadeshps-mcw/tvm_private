@@ -3011,6 +3011,50 @@ def test_forward_reduce_sum():
     verify_model(ReduceSum4().float().eval(), input_data=input_data)
     verify_model(ReduceSum5().float().eval(), input_data=input_data)
 
+def blackman_ref(n, periodic):
+    if n == 1:
+        return np.array([1.0], dtype="float32")
+    denom = n if periodic else n - 1
+    x = np.arange(n, dtype="float32")
+    return (
+        0.42
+        - 0.5 * np.cos(2 * np.pi * x / denom)
+        + 0.08 * np.cos(4 * np.pi * x / denom)
+    ).astype("float32")
+
+
+class BlackmanTorch(torch.nn.Module):
+    def __init__(self, n, periodic):
+        super().__init__()
+        self.n = n
+        self.periodic = periodic
+
+    def forward(self):
+        return torch.blackman_window(self.n, periodic=self.periodic)
+
+
+@tvm.testing.parametrize_targets("llvm")
+def test_pytorch_blackman_window(target):
+    for n in [1, 16, 64]:
+        for periodic in [True, False]:
+            model = BlackmanTorch(n, periodic).eval()
+            scripted = torch.jit.trace(model, ())
+
+            mod, params = relay.frontend.from_pytorch(scripted, [])
+
+            with tvm.transform.PassContext(opt_level=3):
+                lib = relay.build(mod, target, params=params)
+
+           
+            dev = tvm.cpu()
+            m = graph_executor.GraphModule(lib["default"](dev))
+            m.run()
+            out = m.get_output(0).numpy()
+
+
+            np.testing.assert_allclose(
+                out, blackman_ref(n, periodic), rtol=1e-5, atol=1e-6
+            )
 
 @tvm.testing.uses_gpu
 def test_forward_reduce_prod():

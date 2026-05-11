@@ -44,6 +44,10 @@ def sort(data, axis=-1, is_ascend=1):
     return _make.sort(data, axis, is_ascend)
 
 
+def blackman_window(window_length, periodic=True, dtype="float32"):
+    return _make.blackman_window(window_length, periodic, dtype)
+
+
 def argsort(data, axis=-1, is_ascend=1, dtype="int32"):
     """Performs sorting along the given axis and returns an array of indices
     having same shape as an input array that index data in sorted order.

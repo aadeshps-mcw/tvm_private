@@ -998,6 +998,35 @@ class PyTorchOpConverter:
             alpha * _op.nn.relu(_expr.const(1.0, dtype=dtype) - _op.exp(data)) + _op.nn.relu(data)
         )
 
+    def blackman_window(self, inputs, input_types):
+        """
+        PyTorch frontend handler for aten::blackman_window
+        """
+
+        # inputs layout from PyTorch IR:
+        # inputs[0] : window_length (scalar)
+        # inputs[1] : periodic (bool)
+        # inputs[2] : dtype or None
+        # inputs[3] : layout (ignored)
+        # inputs[4] : device (ignored)
+        # inputs[5] : requires_grad (ignored)
+
+        window_length = inputs[0]
+        periodic = True
+        if len(inputs) > 1 and inputs[1] is not None:
+            periodic = inputs[1]
+
+        dtype = "float32"
+        if len(inputs) > 2 and inputs[2] is not None:
+            dtype = self.infer_type(inputs[2]).dtype
+
+        return _op.blackman_window(
+            window_length,
+            periodic=periodic,
+            dtype=dtype,
+        )
+
+
     def silu(self, inputs, input_types):
         data = inputs[0]
         return data * _op.tensor.sigmoid(data)
@@ -4073,6 +4102,7 @@ class PyTorchOpConverter:
             "aten::narrow": self.narrow,
             "aten::split": self.split,
             "aten::tensor_split": self.tensor_split,
+            "aten::blackman_window": self.blackman_window,
             "aten::split_with_sizes": self.split_with_sizes,
             "aten::select": self.select,
             "aten::take": self.take,

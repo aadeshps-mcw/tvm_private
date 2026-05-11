@@ -243,6 +243,10 @@ class InitOpAttrs(Attrs):
 class ArangeAttrs(Attrs):
     """Attributes used in arange operators"""
 
+@tvm._ffi.register_object("relay.attrs.BlackmanWindowAttrs")
+class BlackmanWindowAttrs(Attrs):
+    """Attributes used in blackman_window operators"""
+
 
 @tvm._ffi.register_object("relay.attrs.MeshgridAttrs")
 class MeshgridAttrs(Attrs):
