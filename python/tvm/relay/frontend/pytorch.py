@@ -1002,31 +1002,53 @@ class PyTorchOpConverter:
         """
         PyTorch frontend handler for aten::blackman_window
         """
-
         # inputs layout from PyTorch IR:
-        # inputs[0] : window_length (scalar)
-        # inputs[1] : periodic (bool)
-        # inputs[2] : dtype or None
+        # inputs[0] : window_length (scalar / constant expression)
+        # inputs[1] : periodic (bool / constant expression)
+        # inputs[2] : dtype enum or None
         # inputs[3] : layout (ignored)
         # inputs[4] : device (ignored)
         # inputs[5] : requires_grad (ignored)
 
-        window_length = inputs[0]
+        window_length_expr = inputs[0]
+        if isinstance(window_length_expr, _expr.Constant):
+            val = window_length_expr.data.asnumpy()
+            window_length = int(val.item() if val.ndim == 0 else val[0])
+        elif isinstance(window_length_expr, tvm.tir.IntImm):
+            window_length = int(window_length_expr.value)
+        elif isinstance(window_length_expr, int):
+            window_length = window_length_expr
+        else:
+            raise TypeError(
+                f"Expected static integer for window_length, received {type(window_length_expr)}."
+            )
+
         periodic = True
         if len(inputs) > 1 and inputs[1] is not None:
-            periodic = inputs[1]
+            periodic_expr = inputs[1]
+            if isinstance(periodic_expr, _expr.Constant ):
+                val = periodic_expr.data.asnumpy()
+                periodic = bool(val.item() if val.ndim == 0 else val[0])
+            elif isinstance(periodic_expr, (bool, int)):
+                periodic = bool(periodic_expr)
+            else:
+                periodic = bool(self.infer_type(periodic_expr))
 
         dtype = "float32"
         if len(inputs) > 2 and inputs[2] is not None:
-            dtype = self.infer_type(inputs[2]).dtype
+            dtype_expr = inputs[2]
+            if isinstance(dtype_expr, _expr.Constant):
+                val = dtype_expr.data.asnumpy()
+                dtype_enum = int(val.item() if val.ndim == 0 else val[0])
+                dtype = self.convert_dtype_value(dtype_enum)
+            else:
+                dtype = self.convert_dtype_value(dtype_expr)
 
         return _op.blackman_window(
             window_length,
             periodic=periodic,
             dtype=dtype,
         )
-
-
     def silu(self, inputs, input_types):
         data = inputs[0]
         return data * _op.tensor.sigmoid(data)

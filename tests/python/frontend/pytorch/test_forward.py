@@ -3045,8 +3045,7 @@ def test_pytorch_blackman_window(target):
             with tvm.transform.PassContext(opt_level=3):
                 lib = relay.build(mod, target, params=params)
 
-           
-            dev = tvm.cpu()
+            dev = tvm.device(target, 0)
             m = graph_executor.GraphModule(lib["default"](dev))
             m.run()
             out = m.get_output(0).numpy()
