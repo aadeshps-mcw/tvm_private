@@ -149,6 +149,41 @@ def test_topk(executor_kind):
                 verify_topk(k, axis, ret_type, False, "int64", "float16")
 
 
+def blackman_ref(n, periodic):
+    if n == 1:
+        return np.array([1.0], dtype="float32")
+    denom = n if periodic else n - 1
+    x = np.arange(n, dtype="float32")
+    return (
+        0.42
+        - 0.5 * np.cos(2 * np.pi * x / denom)
+        + 0.08 * np.cos(4 * np.pi * x / denom)
+    ).astype("float32")
+
+
+@tvm.testing.parametrize_targets
+def test_blackman_window(dev, target):
+    for n in [1, 16, 64]:
+        for periodic in [True, False]:
+            expr = relay.blackman_window(n, periodic, "float32")
+            func = relay.Function([], expr)
+
+            mod = tvm.IRModule.from_expr(func)
+            mod = relay.transform.InferType()(mod)
+
+            
+            result = relay.create_executor(
+                "graph", device=dev, target=target
+            ).evaluate(expr)
+
+            np.testing.assert_allclose(
+                result.numpy(),
+                blackman_ref(n, periodic),
+                rtol=1e-5,
+                atol=1e-6,
+            )
+
+
 @tvm.testing.uses_gpu
 def test_searchsorted():
     def verify_searchsorted(right, dtype):

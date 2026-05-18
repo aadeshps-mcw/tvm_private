@@ -965,6 +965,30 @@ def wrap_compute_batch_norm(topi_compute):
     return _compute_batch_norm
 
 
+
+def _compute_blackman_window(attrs, inputs, out_type):
+    # zero-input op to  read everything from attrs
+    return [
+        topi.blackman_window(
+            attrs.window_length,
+            attrs.periodic,
+            attrs.dtype,
+        )
+    ]
+
+@override_native_generic_func("blackman_window_strategy")
+def blackman_window_strategy(attrs, inputs, out_type, target):
+    """Relay strategy for blackman_window (Model A)."""
+    strategy = _op.OpStrategy()
+
+    strategy.add_implementation(
+        _compute_blackman_window,
+        schedule_injective,
+        name="blackman_window.generic",
+    )
+
+    return strategy
+
 @override_native_generic_func("batch_norm_strategy")
 def batch_norm_strategy(attrs, inputs, out_type, target):
     """batch_norm generic strategy"""

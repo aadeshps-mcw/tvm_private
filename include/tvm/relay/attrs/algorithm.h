@@ -91,6 +91,25 @@ struct SearchSortedAttrs : public tvm::AttrsNode<SearchSortedAttrs> {
         .describe("Data type of the output indices.");
   }
 };
+struct BlackmanWindowAttrs : public tvm::AttrsNode<BlackmanWindowAttrs> {
+  int window_length;
+  bool periodic;
+  DataType dtype;
+
+  TVM_DECLARE_ATTRS(BlackmanWindowAttrs, "relay.attrs.BlackmanWindowAttrs") {
+    TVM_ATTR_FIELD(window_length)
+        .describe("Length of the Blackman window.")
+        .set_default(0);
+
+    TVM_ATTR_FIELD(periodic)
+        .describe("Whether the window is periodic.")
+        .set_default(true);
+
+    TVM_ATTR_FIELD(dtype)
+        .describe("Output data type.")
+        .set_default(DataType::Float(32));
+  }
+};
 
 }  // namespace relay
 }  // namespace tvm

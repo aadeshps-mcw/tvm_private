@@ -45,6 +45,8 @@ register_pattern("topk", OpPattern.OPAQUE)
 register_strategy("searchsorted", strategy.searchsorted_strategy)
 register_pattern("searchsorted", OpPattern.OPAQUE)
 
+#blackman_window 
+register_strategy("blackman_window", strategy.blackman_window_strategy)
 
 @script
 def _topk_shape_func_input_shape(data_shape, k, axis):

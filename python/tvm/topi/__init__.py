@@ -44,6 +44,7 @@ from .sparse_reshape import *
 from .argwhere import *
 from .scan import *
 from .einsum import *
+from .blackman_window import *
 from .unique import *
 from .searchsorted import *
 from .signal import *
