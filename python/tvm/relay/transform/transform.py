@@ -1194,6 +1194,19 @@ def SimplifyExpr():
     return _ffi_api.SimplifyExpr()
 
 
+def CollapseReduceAxis0Pass():
+    """
+    If a reduce op has effective axis == [0], collapse all other dimensions
+    into one, perform reduction, then reshape back to the correct output shape
+
+    Returns
+    -------
+    ret : tvm.transform.Pass
+        The registered CollapseReduceAxis0Pass pass.
+    """
+    return _ffi_api.CollapseReduceAxis0Pass()
+
+
 def PlanDevices(config):
     """
     Uses existing "on_device" and "device_copy" calls to infer the virtual device on which

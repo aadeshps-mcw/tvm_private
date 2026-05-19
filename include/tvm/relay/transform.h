@@ -495,6 +495,14 @@ TVM_DLL Pass RemoveUnusedFunctions(Array<runtime::String> entry_functions);
 TVM_DLL Pass SimplifyExpr();
 
 /*!
+ * \brief If a reduce op has effective axis == [0],collapse all other dimensions
+ *  into one, perform reduction, then reshape back to the correct output shape.
+ *
+ * \return The pass.
+ */
+TVM_DLL Pass CollapseReduceAxis0Pass();
+
+/*!
  * \brief Stripped down version of SimplifyExpr which is run after AlterOpLayout.
  *
  * \return The pass.
