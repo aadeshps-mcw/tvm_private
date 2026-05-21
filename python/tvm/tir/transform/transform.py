@@ -58,6 +58,16 @@ def InjectPrefetch():
     """
     return _ffi_api.InjectPrefetch()  # type: ignore
 
+def SimplifyPow():
+    """Simplify pow in the stmt.
+
+    Returns
+    -------
+    fpass : tvm.transform.Pass
+        The result pass
+    """
+    return _ffi_api.SimplifyPow()
+
 
 def ApplyLayoutTransforms():
     """Reshape buffers that appear in the "layout_transform_map"

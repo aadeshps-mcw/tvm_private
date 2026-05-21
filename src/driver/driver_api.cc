@@ -195,6 +195,7 @@ Array<tvm::transform::Pass> CreatePassList(bool disable_loop_partition) {
 
   // PHASE 0
   Array<tvm::transform::Pass> pass_list = user_lower_phase0;
+  pass_list.push_back(tir::transform::SimplifyPow());
 
   // PHASE 1
   pass_list.push_back(tir::transform::InjectPrefetch());
@@ -303,13 +304,13 @@ IRModule ScheduleToModule(te::Schedule sch, const Array<ObjectRef>& args, const 
 
   // Before TIR transformation.
   tir::Stmt stmt = te::ScheduleOps(sch, te::InferBound(sch), debug_keep_trivial_loop);
-  bool compact = te::VerifyCompactBuffer(stmt);
+  bool compact = te::VerifyCompactBuffer(stmt); //tensorization
 
   Map<te::Tensor, tir::Buffer> out_binds;
   Array<ObjectRef> out_arg_list;
-  GetBinds(args, compact, binds, &out_binds, &out_arg_list);
+  GetBinds(args, compact, binds, &out_binds, &out_arg_list);//assigner
 
-  // Build the function, converting from te::Tensor to tir::Buffer
+  // Build the function, converting from te::Tensor to tir::Buffer // this is the converter
   tir::PrimFunc f = te::SchedulePostProcToPrimFunc(out_arg_list, std::move(stmt), out_binds);
   f = WithAttr(std::move(f), "global_symbol", runtime::String(name));
 
