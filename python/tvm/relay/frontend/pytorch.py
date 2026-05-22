@@ -989,6 +989,10 @@ class PyTorchOpConverter:
         )
 
     def blackman_window(self, inputs, input_types):
+     # w[n] = 0.42 
+     #   - 0.5 * cos(2πn / (N - 1)) 
+     #   + 0.08 * cos(4πn / (N - 1))
+        
         M = _expr.const(inputs[0], "int32")
         periodic = bool(inputs[1])
 
