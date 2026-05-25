@@ -64,6 +64,13 @@ TVM_DLL Pass CreatePrimFuncPass(
  * \return The pass.
  */
 TVM_DLL Pass InjectPrefetch();
+/*!
+* \brief Simplify basic cases of pow function
+*
+* \return The pass
+*/
+TVM_DLL Pass SimplifyPow();
+
 
 // TODO(tvm-team): consolidate configs to the PassContext
 /*!
