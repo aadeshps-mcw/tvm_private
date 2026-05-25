@@ -15,8 +15,20 @@ class PowSimplifier : public StmtExprMutator {
       PrimExpr base = call->args[0];
       PrimExpr exp = call->args[1];
 
-      if (const FloatImmNode* imm = exp.as<FloatImmNode>()) {
-        float val = imm->value;
+     double val = 0.0;
+      bool is_const_exponent = false;
+
+      // 2. Type-Agnostic Extraction
+      if (const IntImmNode* int_imm = exp.as<IntImmNode>()) {
+        val = static_cast<double>(int_imm->value);
+        is_const_exponent = true;
+      } else if (const FloatImmNode* float_imm = exp.as<FloatImmNode>()) {
+        val = float_imm->value;
+        is_const_exponent = true;
+      }
+
+      // 3. Apply optimizations if we successfully extracted a constant
+      if (is_const_exponent) {
 
         if(val == 0.0f) {
           return make_const(base.dtype(), 1.0f);
@@ -31,11 +43,11 @@ class PowSimplifier : public StmtExprMutator {
         }
 
         if(val == 0.5f) {
-          return tvm::sqrt(base);
+          return sqrt(base);
         }
 
         if (val == -0.5f) {
-          return make_const(base.dtype(), 1.0f) / tvm::sqrt(base);
+          return make_const(base.dtype(), 1.0f) / sqrt(base);
         }
 
         if(val == 3.0f) {
