@@ -292,6 +292,7 @@ class Device(ctypes.Structure):
 
     STR2MASK = {
         "llvm": kDLCPU,
+        "json": kDLCPU,        
         "stackvm": kDLCPU,
         "cpu": kDLCPU,
         "c": kDLCPU,
