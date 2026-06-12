@@ -1,0 +1,66 @@
+{
+  "modules": [
+{
+  "function_name": "kernel_dynamic",
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "num_args", "dtype": "int32"}, "b": {"type": "IntImm", "value": 0, "dtype": "int32"}},
+  "body": [
+{
+  "type": "AttrStmt",
+  "attr_key": "compute_scope",
+  "body": {
+  "type": "Allocate",
+  "buffer_var": "i",
+  "dtype": "int32",
+  "extents": [
+    {"type": "IntImm", "value": 1, "dtype": "int32"}
+  ],
+  "body": {
+  "type": "AllocateConst",
+  "buffer_var": "weights_ptr",
+  "dtype": "int32",
+  "extents": [
+    {"type": "IntImm", "value": 4, "dtype": "int32"}
+  ],
+  "body": [
+{
+  "type": "BufferStore",
+  "buffer": "i",
+  "value": {"type": "IntImm", "value": 0, "dtype": "int32"},
+  "indices": [
+    {"type": "IntImm", "value": 0, "dtype": "int32"}
+  ]
+},
+{
+  "type": "While",
+  "condition": {"type": "LT", "dtype": "bool", "a": {"type": "BufferLoad", "buffer": "i", "dtype": "int32", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}, "b": {"type": "IntImm", "value": 4, "dtype": "int32"}},
+  "body": {
+  "type": "BufferStore",
+  "buffer": "i",
+  "value": {"type": "Add", "dtype": "int32", "a": {"type": "BufferLoad", "buffer": "i", "dtype": "int32", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}, "b": {"type": "IntImm", "value": 1, "dtype": "int32"}},
+  "indices": [
+    {"type": "IntImm", "value": 0, "dtype": "int32"}
+  ]
+}
+}
+]
+}
+}
+},
+{
+  "type": "Evaluate",
+  "expr": {
+  "type": "Call",
+  "op": "tir.ret",
+  "dtype": "int32",
+  "args": [
+    {"type": "IntImm", "value": 0, "dtype": "int32"}
+  ]
+}
+}
+]
+}
+}
+  ]
+}
