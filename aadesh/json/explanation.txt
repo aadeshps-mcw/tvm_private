@@ -1,0 +1,343 @@
+=============================Ramp, Broadcast==========================
+
+{
+  "type": "For",
+  "loop_var": { "type": "Var", "name": "i.outer", "dtype": "int32" },
+  "min": { "type": "IntImm", "value": 0, "dtype": "int32" },
+  "extent": { "type": "IntImm", "value": 4, "dtype": "int32" },
+  "body": {
+    "type": "Let",
+    "var": { "type": "Var", "name": "cse_var_1", "dtype": "int32" },
+    "value": {
+      "type": "Mul",
+      "dtype": "int32",
+      "a": { "type": "Var", "name": "i.outer", "dtype": "int32" },
+      "b": { "type": "IntImm", "value": 4, "dtype": "int32" }
+    },
+    "body": {
+      "type": "BufferStore",
+      "buffer": "B",
+      "value": {
+        "type": "Add",
+        "dtype": "float32x4",
+        "a": {
+          "type": "BufferLoad",
+          "buffer": "A",
+          "dtype": "float32x4",
+          "indices": [
+            {
+              "type": "Ramp",
+              "base": { "type": "Var", "name": "cse_var_1", "dtype": "int32" },
+              "stride": { "type": "IntImm", "value": 1, "dtype": "int32" },
+              "lanes": 4
+            }
+          ]
+        },
+        "b": {
+          "type": "Broadcast",
+          "value": { "type": "FloatImm", "value": 2, "dtype": "float32" },
+          "lanes": 4
+        }
+      },
+      "indices": [
+        {
+          "type": "Ramp",
+          "base": { "type": "Var", "name": "cse_var_1", "dtype": "int32" },
+          "stride": { "type": "IntImm", "value": 1, "dtype": "int32" },
+          "lanes": 4
+        }
+      ]
+    }
+  }
+}
+
+
+=====================While, AllocateConst=======================
+
+{
+  "type": "Allocate",
+  "buffer_var": "i",
+  "dtype": "int32",
+  "extents": [
+    { "type": "IntImm", "value": 1, "dtype": "int32" }
+  ],
+  "body": {
+    "type": "AllocateConst",
+    "buffer_var": "weights_ptr",
+    "dtype": "int32",
+    "extents": [
+      { "type": "IntImm", "value": 4, "dtype": "int32" }
+    ],
+    "body": [
+      {
+        "type": "BufferStore",
+        "buffer": "i",
+        "value": { "type": "IntImm", "value": 0, "dtype": "int32" },
+        "indices": [
+          { "type": "IntImm", "value": 0, "dtype": "int32" }
+        ]
+      },
+      {
+        "type": "While",
+        "condition": {
+          "type": "LT",
+          "dtype": "bool",
+          "a": {
+            "type": "BufferLoad",
+            "buffer": "i",
+            "dtype": "int32",
+            "indices": [ { "type": "IntImm", "value": 0, "dtype": "int32" } ]
+          },
+          "b": { "type": "IntImm", "value": 4, "dtype": "int32" }
+        },
+        "body": {
+          "type": "BufferStore",
+          "buffer": "i",
+          "value": {
+            "type": "Add",
+            "dtype": "int32",
+            "a": {
+              "type": "BufferLoad",
+              "buffer": "i",
+              "dtype": "int32",
+              "indices": [ { "type": "IntImm", "value": 0, "dtype": "int32" } ]
+            },
+            "b": { "type": "IntImm", "value": 1, "dtype": "int32" }
+          },
+          "indices": [
+            { "type": "IntImm", "value": 0, "dtype": "int32" }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+=================Call, Cast, Select====================
+{
+  "type": "For",
+  "loop_var": { "type": "Var", "name": "i", "dtype": "int32" },
+  "min": { "type": "IntImm", "value": 0, "dtype": "int32" },
+  "extent": { "type": "IntImm", "value": 10, "dtype": "int32" },
+  "body": {
+    "type": "Let",
+    "var": { "type": "Var", "name": "math_result", "dtype": "float32" },
+    "value": {
+      "type": "Call",
+      "op": "tir.if_then_else",
+      "dtype": "float32",
+      "args": [
+        {
+          "type": "LT",
+          "dtype": "bool",
+          "a": { "type": "FloatImm", "value": 0, "dtype": "float32" },
+          "b": { "type": "BufferLoad", "buffer": "x", "dtype": "float32", "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ] }
+        },
+        {
+          "type": "Call",
+          "op": "tir.call_pure_extern",
+          "dtype": "float32",
+          "args": [
+            { "type": "StringImm", "value": "expf" },
+            { "type": "BufferLoad", "buffer": "x", "dtype": "float32", "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ] }
+          ]
+        },
+        { "type": "FloatImm", "value": 0, "dtype": "float32" }
+      ]
+    },
+    "body": {
+      "type": "BufferStore",
+      "buffer": "out",
+      "value": {
+        "type": "Cast",
+        "dtype": "int32",
+        "value": { "type": "Var", "name": "math_result", "dtype": "float32" }
+      },
+      "indices": [
+        { "type": "Var", "name": "i", "dtype": "int32" }
+      ]
+    }
+  }
+}
+============allocate, IfThenElse, for loop =======================
+{
+  "type": "Allocate",
+  "buffer_var": "temp",
+  "dtype": "float32",
+  "extents": [
+    { "type": "IntImm", "value": 10, "dtype": "int32" }
+  ],
+  "body": [
+    {
+      "type": "For",
+      "loop_var": { "type": "Var", "name": "i", "dtype": "int32" },
+      "min": { "type": "IntImm", "value": 0, "dtype": "int32" },
+      "extent": { "type": "IntImm", "value": 10, "dtype": "int32" },
+      "body": {
+        "type": "IfThenElse",
+        "condition": {
+          "type": "LT",
+          "dtype": "bool",
+          "a": { "type": "FloatImm", "value": 0, "dtype": "float32" },
+          "b": {
+            "type": "BufferLoad",
+            "buffer": "A",
+            "dtype": "float32",
+            "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+          }
+        },
+        "then_case": {
+          "type": "BufferStore",
+          "buffer": "temp",
+          "value": {
+            "type": "BufferLoad",
+            "buffer": "A",
+            "dtype": "float32",
+            "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+          },
+          "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+        },
+        "else_case": {
+          "type": "BufferStore",
+          "buffer": "temp",
+          "value": { "type": "FloatImm", "value": 0, "dtype": "float32" },
+          "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+        }
+      }
+    },
+    {
+      "type": "For",
+      "loop_var": { "type": "Var", "name": "i", "dtype": "int32" },
+      "min": { "type": "IntImm", "value": 0, "dtype": "int32" },
+      "extent": { "type": "IntImm", "value": 10, "dtype": "int32" },
+      "body": {
+        "type": "BufferStore",
+        "buffer": "B",
+        "value": {
+          "type": "BufferLoad",
+          "buffer": "temp",
+          "dtype": "float32",
+          "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+        },
+        "indices": [ { "type": "Var", "name": "i", "dtype": "int32" } ]
+      }
+    }
+  ]
+}
+
+ ==============out[0] = x < 10====================
+
+{
+  "type": "BufferStore",
+  "buffer": "out",
+  "value": {
+    "type": "Cast",
+    "dtype": "int8",
+    "value": {
+      "type": "LT",
+      "dtype": "bool",
+      "a": { "type": "Var", "name": "x", "dtype": "int32" },
+      "b": { "type": "IntImm", "value": 10, "dtype": "int32" }
+    }
+  },
+  "indices": [
+    { "type": "IntImm", "value": 0, "dtype": "int32" }
+  ]
+}
+
+====================== out[0] = x == y =======================
+
+{
+  "type": "BufferStore",
+  "buffer": "out",
+  "value": {
+    "type": "Cast",
+    "dtype": "int8",
+    "value": {
+      "type": "EQ",
+      "dtype": "bool",
+      "a": { "type": "Var", "name": "x", "dtype": "int32" },
+      "b": { "type": "Var", "name": "y", "dtype": "int32" }
+    }
+  },
+  "indices": [
+    { "type": "IntImm", "value": 0, "dtype": "int32" }
+  ]
+}
+
+===============C[i] = (A[i] + B[i]) * (A[i] - 1.0) / 2.0   -->  arithmetic ops ==================
+{
+  "type": "For",
+  "loop_var": { "type": "Var", "name": "i", "dtype": "int32" },
+  "min": { "type": "IntImm", "value": 0, "dtype": "int32" },
+  "extent": { "type": "Var", "name": "n", "dtype": "int32" },
+  "body": {
+    "type": "BufferStore",
+    "buffer": "C",
+    "value": {
+      "type": "Mul",
+      "dtype": "float32",
+      "a": {
+        "type": "Mul",
+        "dtype": "float32",
+        "a": {
+          "type": "Add",
+          "dtype": "float32",
+          "a": {
+            "type": "BufferLoad",
+            "buffer": "A",
+            "dtype": "float32",
+            "indices": [
+              {
+                "type": "Mul",
+                "dtype": "int32",
+                "a": { "type": "Var", "name": "i", "dtype": "int32" },
+                "b": { "type": "Var", "name": "stride", "dtype": "int32" }
+              }
+            ]
+          },
+          "b": {
+            "type": "BufferLoad",
+            "buffer": "B",
+            "dtype": "float32",
+            "indices": [
+              {
+                "type": "Mul",
+                "dtype": "int32",
+                "a": { "type": "Var", "name": "i", "dtype": "int32" },
+                "b": { "type": "Var", "name": "stride", "dtype": "int32" }
+              }
+            ]
+          }
+        },
+        "b": {
+          "type": "Sub",
+          "dtype": "float32",
+          "a": {
+            "type": "BufferLoad",
+            "buffer": "A",
+            "dtype": "float32",
+            "indices": [
+              {
+                "type": "Mul",
+                "dtype": "int32",
+                "a": { "type": "Var", "name": "i", "dtype": "int32" },
+                "b": { "type": "Var", "name": "stride", "dtype": "int32" }
+              }
+            ]
+          },
+          "b": { "type": "FloatImm", "value": 1, "dtype": "float32" }
+        }
+      },
+      "b": { "type": "FloatImm", "value": 0.5, "dtype": "float32" }
+    },
+    "indices": [
+      {
+        "type": "Mul",
+        "dtype": "int32",
+        "a": { "type": "Var", "name": "i", "dtype": "int32" },
+        "b": { "type": "Var", "name": "stride", "dtype": "int32" }
+      }
+    ]
+  }
+}
