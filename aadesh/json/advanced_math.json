@@ -1,0 +1,485 @@
+{
+  "modules": [
+{
+  "function_name": "kernel_activation",
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "num_args", "dtype": "int32"}, "b": {"type": "IntImm", "value": 2, "dtype": "int32"}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "args", "dtype": "handle"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "arg_type_ids", "dtype": "handle"}
+  ]
+}},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "x_handle.code", "dtype": "int32"},
+  "value": {"type": "BufferLoad", "buffer": "arg_type_ids", "dtype": "int32", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Or", "dtype": "bool", "a": {"type": "Or", "dtype": "bool", "a": {"type": "Or", "dtype": "bool", "a": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "x_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 3, "dtype": "int32"}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "x_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 13, "dtype": "int32"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "x_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 7, "dtype": "int32"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "x_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 4, "dtype": "int32"}}},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "out_handle.code", "dtype": "int32"},
+  "value": {"type": "BufferLoad", "buffer": "arg_type_ids", "dtype": "int32", "indices": [{"type": "IntImm", "value": 1, "dtype": "int32"}]},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Or", "dtype": "bool", "a": {"type": "Or", "dtype": "bool", "a": {"type": "Or", "dtype": "bool", "a": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "out_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 3, "dtype": "int32"}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "out_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 13, "dtype": "int32"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "out_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 7, "dtype": "int32"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "out_handle.code", "dtype": "int32"}, "b": {"type": "IntImm", "value": 4, "dtype": "int32"}}},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "x_handle", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "args", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 12, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "out_handle", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "args", "dtype": "handle"},
+    {"type": "IntImm", "value": 1, "dtype": "int32"},
+    {"type": "IntImm", "value": 12, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 1, "dtype": "int32"}, "b": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 4, "dtype": "int32"}
+  ]
+}},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "kernel_activation.x_handle.shape", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 2, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "kernel_activation.x_handle.strides", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 3, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "dev_id", "dtype": "int32"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 9, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "x", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 1, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "AttrStmt",
+  "attr_key": "storage_alignment",
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 1, "dtype": "int32"}, "b": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 4, "dtype": "int32"}
+  ]
+}},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "kernel_activation.out_handle.shape", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 2, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "kernel_activation.out_handle.strides", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 3, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "out", "dtype": "handle"},
+  "value": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "handle",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 1, "dtype": "int32"}
+  ]
+},
+  "body": {
+  "type": "AttrStmt",
+  "attr_key": "storage_alignment",
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "And", "dtype": "bool", "a": {"type": "And", "dtype": "bool", "a": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint8",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 5, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 2, "dtype": "uint8"}}, "b": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint8",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 6, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 32, "dtype": "uint8"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint16",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 7, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 1, "dtype": "uint16"}}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "Cast", "dtype": "int32", "value": {"type": "BufferLoad", "buffer": "kernel_activation.x_handle.shape", "dtype": "int64", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}}, "b": {"type": "IntImm", "value": 10, "dtype": "int32"}},
+  "body": [
+{
+  "type": "IfThenElse",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "kernel_activation.x_handle.strides", "dtype": "handle"}
+  ]
+}},
+  "then_case": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 1, "dtype": "int32"}, "b": {"type": "Cast", "dtype": "int32", "value": {"type": "BufferLoad", "buffer": "kernel_activation.x_handle.strides", "dtype": "int64", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}}},
+  "body": {
+  "type": "Evaluate",
+  "expr": {"type": "IntImm", "value": 0, "dtype": "int32"}
+}
+}
+},
+{
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 0, "dtype": "uint64"}, "b": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint64",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 8, "dtype": "int32"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "x_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 10, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 1, "dtype": "int32"}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "x", "dtype": "handle"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "And", "dtype": "bool", "a": {"type": "And", "dtype": "bool", "a": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint8",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 5, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 0, "dtype": "uint8"}}, "b": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint8",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 6, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 32, "dtype": "uint8"}}}, "b": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint16",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 7, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 1, "dtype": "uint16"}}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "Cast", "dtype": "int32", "value": {"type": "BufferLoad", "buffer": "kernel_activation.out_handle.shape", "dtype": "int64", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}}, "b": {"type": "IntImm", "value": 10, "dtype": "int32"}},
+  "body": [
+{
+  "type": "IfThenElse",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "kernel_activation.out_handle.strides", "dtype": "handle"}
+  ]
+}},
+  "then_case": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 1, "dtype": "int32"}, "b": {"type": "Cast", "dtype": "int32", "value": {"type": "BufferLoad", "buffer": "kernel_activation.out_handle.strides", "dtype": "int64", "indices": [{"type": "IntImm", "value": 0, "dtype": "int32"}]}}},
+  "body": {
+  "type": "Evaluate",
+  "expr": {"type": "IntImm", "value": 0, "dtype": "int32"}
+}
+}
+},
+{
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "IntImm", "value": 0, "dtype": "uint64"}, "b": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "uint64",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 8, "dtype": "int32"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 10, "dtype": "int32"}
+  ]
+}, "b": {"type": "IntImm", "value": 1, "dtype": "int32"}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "EQ", "dtype": "bool", "a": {"type": "Var", "name": "dev_id", "dtype": "int32"}, "b": {
+  "type": "Call",
+  "op": "tir.tvm_struct_get",
+  "dtype": "int32",
+  "args": [
+    {"type": "Var", "name": "out_handle", "dtype": "handle"},
+    {"type": "IntImm", "value": 0, "dtype": "int32"},
+    {"type": "IntImm", "value": 9, "dtype": "int32"}
+  ]
+}},
+  "body": {
+  "type": "Assert",
+  "condition": {"type": "Not", "dtype": "bool", "a": {
+  "type": "Call",
+  "op": "tir.isnullptr",
+  "dtype": "bool",
+  "args": [
+    {"type": "Var", "name": "out", "dtype": "handle"}
+  ]
+}},
+  "body": [
+{
+  "type": "AttrStmt",
+  "attr_key": "compute_scope",
+  "body": {
+  "type": "For",
+  "loop_var": {"type": "Var", "name": "i", "dtype": "int32"},
+  "min": {"type": "IntImm", "value": 0, "dtype": "int32"},
+  "extent": {"type": "IntImm", "value": 10, "dtype": "int32"},
+  "body": {
+  "type": "Let",
+  "var": {"type": "Var", "name": "math_result", "dtype": "float32"},
+  "value": {
+  "type": "Call",
+  "op": "tir.if_then_else",
+  "dtype": "float32",
+  "args": [
+    {"type": "LT", "dtype": "bool", "a": {"type": "FloatImm", "value": 0, "dtype": "float32"}, "b": {"type": "BufferLoad", "buffer": "x", "dtype": "float32", "indices": [{"type": "Var", "name": "i", "dtype": "int32"}]}},
+    {
+  "type": "Call",
+  "op": "tir.call_pure_extern",
+  "dtype": "float32",
+  "args": [
+    {"type": "StringImm", "value": "expf"},
+    {"type": "BufferLoad", "buffer": "x", "dtype": "float32", "indices": [{"type": "Var", "name": "i", "dtype": "int32"}]}
+  ]
+},
+    {"type": "FloatImm", "value": 0, "dtype": "float32"}
+  ]
+},
+  "body": {
+  "type": "BufferStore",
+  "buffer": "out",
+  "value": {"type": "Cast", "dtype": "int32", "value": {"type": "Var", "name": "math_result", "dtype": "float32"}},
+  "indices": [
+    {"type": "Var", "name": "i", "dtype": "int32"}
+  ]
+}
+}
+}
+},
+{
+  "type": "Evaluate",
+  "expr": {
+  "type": "Call",
+  "op": "tir.ret",
+  "dtype": "int32",
+  "args": [
+    {"type": "IntImm", "value": 0, "dtype": "int32"}
+  ]
+}
+}
+]
+}
+}
+}
+}
+]
+}
+}
+}
+}
+}
+]
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+  ]
+}

@@ -339,6 +339,10 @@ TVM_REGISTER_TARGET_KIND("rocm", kDLROCM)
     .set_default_keys({"rocm", "gpu"})
     .set_target_parser(UpdateROCmAttrs);
 
+TVM_REGISTER_TARGET_KIND("json", kDLCPU)
+    .set_default_keys({"cpu"})
+    .set_target_parser(tvm::target::parsers::cpu::ParseTarget);
+
 TVM_REGISTER_TARGET_KIND("opencl", kDLOpenCL)
     .add_attr_option<Integer>("max_threads_per_block", Integer(256))
     .add_attr_option<Integer>("max_shared_memory_per_block", Integer(16384))
