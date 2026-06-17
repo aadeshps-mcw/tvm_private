@@ -948,6 +948,67 @@ def test_scatter_elements(target, dev):
     # )
 
 
+def numpy_blackman(M, periodic):
+    denom = M if periodic else (M - 1)
+    n = np.arange(M, dtype="float32")
+    return (
+        0.42
+        - 0.5 * np.cos(2 * np.pi * n / denom)
+        + 0.08 * np.cos(4 * np.pi * n / denom)
+    ).astype("float32")
+
+
+def run_onnx_blackman_test(M, periodic):
+    # Build ONNX graph
+    node = helper.make_node(
+        "BlackmanWindow",
+        inputs=["M"],
+        outputs=["Y"],
+        periodic=int(periodic),
+    )
+
+    graph = helper.make_graph(
+        [node],
+        "blackman_test",
+        inputs=[
+            helper.make_tensor_value_info("M", TensorProto.INT64, [])
+        ],
+        outputs=[
+            helper.make_tensor_value_info("Y", TensorProto.FLOAT, [M])
+        ],
+        initializer=[
+            helper.make_tensor(
+                name="M",
+                data_type=TensorProto.INT64,
+                dims=[],
+                vals=[M],
+            )
+        ],
+    )
+
+    model = helper.make_model(graph, opset_imports=[helper.make_opsetid("", 17)])
+
+    mod, params = relay.frontend.from_onnx(model, freeze_params=True)
+
+    with tvm.transform.PassContext(opt_level=3):
+        lib = relay.build(mod, target="llvm", params=params)
+
+    dev = tvm.cpu()
+    rt_mod = graph_executor.GraphModule(lib["default"](dev))
+    rt_mod.run()
+    out = rt_mod.get_output(0).numpy()
+
+    ref = numpy_blackman(M, periodic)
+
+    assert out.shape == (M,)
+    np.testing.assert_allclose(out, ref, rtol=1e-5, atol=1e-6)
+
+
+@pytest.mark.parametrize("periodic", [True, False])
+def test_onnx_blackman_window(periodic):
+    run_onnx_blackman_test(16, periodic)
+
+
 @tvm.testing.parametrize_targets
 def test_slice(target, dev):
     """test_slice"""

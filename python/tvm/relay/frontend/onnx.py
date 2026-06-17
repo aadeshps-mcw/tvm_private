@@ -3251,6 +3251,56 @@ class ReduceL1(OnnxOpConverter):
         return AttrCvt("sum")(inputs, attr)
 
 
+class BlackmanWindow(OnnxOpConverter):
+    @classmethod
+    def _impl_v17(cls, inputs, attr, params):
+
+        if not isinstance(inputs[0], _expr.Constant):
+            raise ValueError("BlackmanWindow requires constant window_length")
+
+        M = int(inputs[0].data.numpy())
+        periodic = bool(attr.get("periodic", 1))
+
+        out_dtype = "float32"
+        compute_dtype = "float32"
+
+        pi = _expr.const(math.pi, compute_dtype)
+        c0 = _expr.const(0.42, compute_dtype)
+        c1 = _expr.const(0.5, compute_dtype)
+        c2 = _expr.const(0.08, compute_dtype)
+
+        zero_i32 = _expr.const(0, "int32")
+        one_i32 = _expr.const(1, "int32")
+        one_f = _expr.const(1.0, compute_dtype)
+        two = _expr.const(2.0, compute_dtype)
+        four = _expr.const(4.0, compute_dtype)
+
+        n = _op.cast(
+            _op.arange(zero_i32, _expr.const(M, "int32"), one_i32, dtype="int32"),
+            compute_dtype,
+        )
+
+        M_f = _expr.const(float(M), compute_dtype)
+        denom = M_f if periodic else _op.subtract(M_f, one_f)
+
+        cos_2pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(two, pi), n),
+                denom,
+            )
+        )
+        cos_4pi = _op.cos(
+            _op.divide(
+                _op.multiply(_op.multiply(four, pi), n),
+                denom,
+            )
+        )
+
+        out = _op.subtract(c0, _op.multiply(c1, cos_2pi))
+        out = _op.add(out, _op.multiply(c2, cos_4pi))
+
+        return _op.cast(out, out_dtype)
+
 class ReduceL2(OnnxOpConverter):
     """Operator converter for ReduceL2."""
 
@@ -6723,6 +6773,7 @@ def _get_convert_map(opset):
         "If": If.get_converter(opset),
         # Torch ATen Dispatcher.
         "ATen": ATen.get_converter(opset),
+        "BlackmanWindow": BlackmanWindow.get_converter(opset),
         # Quantization
         "QuantizeLinear": QuantizeLinear.get_converter(opset),
         "DequantizeLinear": DequantizeLinear.get_converter(opset),
