@@ -1,0 +1,50 @@
+
+
+@T.prim_func
+def tvmgen_default_fused_image_dilation2d(p0: T.Buffer((1, 64, 32, 32), "float32"), p1: T.Buffer((64, 3, 3), "float32"), compute: T.Buffer((1, 64, 32, 32), "float32")):
+    T.func_attr({"from_legacy_te_schedule": T.bool(True), "tir.noalias": T.bool(True)})
+    pad_temp = T.allocate([73984], "float32", "global")
+    pad_temp_1 = T.Buffer((73984,), data=pad_temp)
+    for i1, i2, i3 in T.grid(64, 34, 34):
+        p0_1 = T.Buffer((65536,), data=p0.data)
+        pad_temp_1[i1 * 1156 + i2 * 34 + i3] = T.if_then_else(1 <= i2 and i2 < 33 and 1 <= i3 and i3 < 33, p0_1[i1 * 1024 + i2 * 32 + i3 - 33], T.float32(0))
+    for ff, yy, xx in T.grid(64, 32, 32):
+        compute_1 = T.Buffer((65536,), data=compute.data)
+        compute_1[ff * 1024 + yy * 32 + xx] = T.float32(-3.4028234663852886e+38)
+        for ry, rx in T.grid(3, 3):
+            p1_1 = T.Buffer((576,), data=p1.data)
+            compute_1[ff * 1024 + yy * 32 + xx] = T.max(compute_1[ff * 1024 + yy * 32 + xx], pad_temp_1[ff * 1156 + yy * 34 + ry * 34 + xx + rx] + p1_1[ff * 9 + ry * 3 + rx])
+
+
+@T.prim_func
+def tvmgen_default_fused_image_dilation2d(p0: T.Buffer((1, 64, 32, 32), "float32"), p1: T.Buffer((64, 3, 3), "float32"), compute: T.Buffer((1, 64, 32, 32), "float32")):
+    T.func_attr({"from_legacy_te_schedule": T.bool(True), "tir.noalias": T.bool(True)})
+    pad_temp = T.allocate([73984], "float32", "global")
+    pad_temp_1 = T.Buffer((73984,), data=pad_temp)
+    for i1, i2, i3 in T.grid(64, 34, 34):
+        p0_1 = T.Buffer((65536,), data=p0.data)
+        pad_temp_1[i1 * 1156 + i2 * 34 + i3] = T.if_then_else(1 <= i2 and i2 < 33 and 1 <= i3 and i3 < 33, p0_1[i1 * 1024 + i2 * 32 + i3 - 33], T.float32(0))
+    for nn_ff_fused in T.parallel(64):
+        for yy in range(32):
+            compute_1 = T.Buffer((65536,), data=compute.data)
+            for xx_outer_init in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer_init * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer_init * 8 + 8] = T.Broadcast(T.float32(-3.4028234663852886e+38), 8)
+            p1_1 = T.Buffer((576,), data=p1.data)
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 1:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 1 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 1], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 2:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 2 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 2], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 34:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 34 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 3], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 35:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 35 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 4], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 36:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 36 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 5], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 68:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 68 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 6], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 69:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 69 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 7], 8))
+            for xx_outer in range(4):
+                compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8] = T.max(compute_1[nn_ff_fused * 1024 + yy * 32 + xx_outer * 8:nn_ff_fused * 1024 + yy * 32 + xx_outer * 8 + 8], pad_temp_1[nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 70:nn_ff_fused * 1156 + yy * 34 + xx_outer * 8 + 70 + 8] + T.Broadcast(p1_1[nn_ff_fused * 9 + 8], 8))
