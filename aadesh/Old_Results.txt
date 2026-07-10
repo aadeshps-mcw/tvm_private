@@ -1,0 +1,257 @@
+
+============================================================
+CASE 1 [TIER1]: Standard 3x3 Dilation (Baseline, NCHW)
+Data: (1, 64, 128, 128), Kernel: (64, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 1.8738 ms
+  Run 2/5 Median Time: 1.8586 ms
+  Run 3/5 Median Time: 1.8650 ms
+  Run 4/5 Median Time: 1.8746 ms
+  Run 5/5 Median Time: 1.8623 ms
+
+>> Final Average over 5 runs: 1.8669 ms
+>> Macro-Run Std Dev:            0.0063 ms
+
+============================================================
+CASE 2 [TIER1]: Standard 3x3 Dilation (Baseline, NHWC)
+Data: (1, 128, 128, 64), Kernel: (3, 3, 64)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NHWC, kernel_layout=HWI
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 1.7320 ms
+  Run 2/5 Median Time: 1.7239 ms
+  Run 3/5 Median Time: 1.7249 ms
+  Run 4/5 Median Time: 1.7375 ms
+  Run 5/5 Median Time: 1.7437 ms
+
+>> Final Average over 5 runs: 1.7324 ms
+>> Macro-Run Std Dev:            0.0075 ms
+
+============================================================
+CASE 3 [TIER1]: Full-Res Grayscale Preprocessing (document/OCR-style)
+Data: (1, 1, 1024, 1024), Kernel: (1, 5, 5)
+Strides: (1, 1), Pad: (2, 2), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 4.1868 ms
+  Run 2/5 Median Time: 4.1771 ms
+  Run 3/5 Median Time: 4.1661 ms
+  Run 4/5 Median Time: 4.1719 ms
+  Run 5/5 Median Time: 4.1718 ms
+
+>> Final Average over 5 runs: 4.1748 ms
+>> Macro-Run Std Dev:            0.0069 ms
+
+============================================================
+CASE 4 [TIER1]: Large Spatial, Moderate Channels (mid-res feature-map morphology)
+Data: (1, 16, 512, 512), Kernel: (16, 5, 5)
+Strides: (1, 1), Pad: (2, 2), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 16.8355 ms
+  Run 2/5 Median Time: 16.9341 ms
+  Run 3/5 Median Time: 16.8794 ms
+  Run 4/5 Median Time: 16.8504 ms
+  Run 5/5 Median Time: 16.9045 ms
+
+>> Final Average over 5 runs: 16.8808 ms
+>> Macro-Run Std Dev:            0.0357 ms
+
+============================================================
+CASE 5 [TIER1]: Mid-Network Feature Map (higher channels, smaller spatial)
+Data: (1, 128, 56, 56), Kernel: (128, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 0.6681 ms
+  Run 2/5 Median Time: 0.6718 ms
+  Run 3/5 Median Time: 0.6738 ms
+  Run 4/5 Median Time: 0.6734 ms
+  Run 5/5 Median Time: 0.6776 ms
+
+>> Final Average over 5 runs: 0.6729 ms
+>> Macro-Run Std Dev:            0.0031 ms
+
+============================================================
+CASE 6 [TIER1]: Odd (non-power-of-2) Image Size
+Data: (1, 64, 127, 255), Kernel: (64, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 3.7686 ms
+  Run 2/5 Median Time: 3.7649 ms
+  Run 3/5 Median Time: 3.8586 ms
+  Run 4/5 Median Time: 3.7650 ms
+  Run 5/5 Median Time: 3.7733 ms
+
+>> Final Average over 5 runs: 3.7861 ms
+>> Macro-Run Std Dev:            0.0364 ms
+
+============================================================
+CASE 7 [TIER1]: Batched Inference (Batch Size 8)
+Data: (8, 64, 128, 128), Kernel: (64, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 16.5449 ms
+  Run 2/5 Median Time: 16.4022 ms
+  Run 3/5 Median Time: 16.3993 ms
+  Run 4/5 Median Time: 16.4702 ms
+  Run 5/5 Median Time: 16.4787 ms
+
+>> Final Average over 5 runs: 16.4591 ms
+>> Macro-Run Std Dev:            0.0542 ms
+
+============================================================
+CASE 8 [TIER2]: Strided Dilation (Stride=2, downsampling)
+Data: (1, 64, 128, 128), Kernel: (64, 3, 3)
+Strides: (2, 2), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 0.7290 ms
+  Run 2/5 Median Time: 0.7260 ms
+  Run 3/5 Median Time: 0.7799 ms
+  Run 4/5 Median Time: 0.7264 ms
+  Run 5/5 Median Time: 0.7518 ms
+
+>> Final Average over 5 runs: 0.7426 ms
+>> Macro-Run Std Dev:            0.0210 ms
+
+============================================================
+CASE 9 [TIER2]: Heavy Channel Depth (upper realistic bound)
+Data: (1, 256, 64, 64), Kernel: (256, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 1.8577 ms
+  Run 2/5 Median Time: 1.8678 ms
+  Run 3/5 Median Time: 1.8592 ms
+  Run 4/5 Median Time: 1.8573 ms
+  Run 5/5 Median Time: 1.8539 ms
+
+>> Final Average over 5 runs: 1.8592 ms
+>> Macro-Run Std Dev:            0.0047 ms
+
+============================================================
+CASE 10 [TIER2]: 5x5 Kernel (standalone, isolates kernel-size effect)
+Data: (1, 64, 128, 128), Kernel: (64, 5, 5)
+Strides: (1, 1), Pad: (2, 2), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 4.1557 ms
+  Run 2/5 Median Time: 4.1492 ms
+  Run 3/5 Median Time: 4.1486 ms
+  Run 4/5 Median Time: 4.2001 ms
+  Run 5/5 Median Time: 4.1571 ms
+
+>> Final Average over 5 runs: 4.1621 ms
+>> Macro-Run Std Dev:            0.0193 ms
+
+============================================================
+CASE 11 [TIER2]: 7x7 Kernel (realistic upper bound on SE size)
+Data: (1, 64, 128, 128), Kernel: (64, 7, 7)
+Strides: (1, 1), Pad: (3, 3), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 27.9627 ms
+  Run 2/5 Median Time: 27.9275 ms
+  Run 3/5 Median Time: 27.9162 ms
+  Run 4/5 Median Time: 27.9141 ms
+  Run 5/5 Median Time: 27.9131 ms
+
+>> Final Average over 5 runs: 27.9267 ms
+>> Macro-Run Std Dev:            0.0187 ms
+
+============================================================
+CASE 12 [TIER2]: Tiny Input (deep feature map late in network)
+Data: (1, 64, 8, 8), Kernel: (64, 3, 3)
+Strides: (1, 1), Pad: (1, 1), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 0.0061 ms
+  Run 2/5 Median Time: 0.0065 ms
+  Run 3/5 Median Time: 0.0065 ms
+  Run 4/5 Median Time: 0.0065 ms
+  Run 5/5 Median Time: 0.0065 ms
+
+>> Final Average over 5 runs: 0.0064 ms
+>> Macro-Run Std Dev:            0.0002 ms
+
+============================================================
+CASE 13 [TIER3]: 1x1 Kernel (degenerate case)
+Data: (1, 64, 128, 128), Kernel: (64, 1, 1)
+Strides: (1, 1), Pad: (0, 0), Dilation: (1, 1)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 0.7168 ms
+  Run 2/5 Median Time: 0.7310 ms
+  Run 3/5 Median Time: 0.7237 ms
+  Run 4/5 Median Time: 0.7288 ms
+  Run 5/5 Median Time: 0.7236 ms
+
+>> Final Average over 5 runs: 0.7248 ms
+>> Macro-Run Std Dev:            0.0049 ms
+
+============================================================
+CASE 14 [TIER3]: Atrous Structuring Element (Dilation Rate=2)
+Data: (1, 64, 128, 128), Kernel: (64, 3, 3)
+Strides: (1, 1), Pad: (2, 2), Dilation: (2, 2)
+data_layout=NCHW, kernel_layout=IHW
+============================================================
+
+--- Profiling Results (5 Macro Runs) ---
+  Run 1/5 Median Time: 1.9014 ms
+  Run 2/5 Median Time: 1.8992 ms
+  Run 3/5 Median Time: 1.8987 ms
+  Run 4/5 Median Time: 1.8970 ms
+  Run 5/5 Median Time: 1.8954 ms
+
+>> Final Average over 5 runs: 1.8984 ms
+>> Macro-Run Std Dev:            0.0020 ms
+
+======================================================================
+SUMMARY
+======================================================================
+Case 1 [TIER1]: Standard 3x3 Dilation (Baseline, NCHW)            1.8669 ms
+Case 2 [TIER1]: Standard 3x3 Dilation (Baseline, NHWC)            1.7324 ms
+Case 3 [TIER1]: Full-Res Grayscale Preprocessing (document/OCR-style) 4.1748 ms
+Case 4 [TIER1]: Large Spatial, Moderate Channels (mid-res feature-map morphology) 16.8808 ms
+Case 5 [TIER1]: Mid-Network Feature Map (higher channels, smaller spatial) 0.6729 ms
+Case 6 [TIER1]: Odd (non-power-of-2) Image Size                   3.7861 ms
+Case 7 [TIER1]: Batched Inference (Batch Size 8)                  16.4591 ms
+Case 8 [TIER2]: Strided Dilation (Stride=2, downsampling)         0.7426 ms
+Case 9 [TIER2]: Heavy Channel Depth (upper realistic bound)       1.8592 ms
+Case 10 [TIER2]: 5x5 Kernel (standalone, isolates kernel-size effect) 4.1621 ms
+Case 11 [TIER2]: 7x7 Kernel (realistic upper bound on SE size)    27.9267 ms
+Case 12 [TIER2]: Tiny Input (deep feature map late in network)    0.0064 ms
+Case 13 [TIER3]: 1x1 Kernel (degenerate case)                     0.7248 ms
+Case 14 [TIER3]: Atrous Structuring Element (Dilation Rate=2)     1.8984 ms
+======================================================================

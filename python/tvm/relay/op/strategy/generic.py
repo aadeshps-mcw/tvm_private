@@ -790,7 +790,7 @@ def wrap_compute_dilation2d(topi_compute, need_data_layout=False):
 @override_native_generic_func("dilation2d_strategy")
 def dilation2d_strategy(attrs, inputs, out_type, target):
     """dilation2d_strategy generic strategy"""
-    logger.warning("dilation2d_strategy is not optimized for this platform.")
+    #logger.warning("dilation2d_strategy is not optimized for this platform.")
     strategy = _op.OpStrategy()
     dilations = get_const_tuple(attrs.dilations)
     layout = attrs.data_layout
