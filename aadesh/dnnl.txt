@@ -1,0 +1,1224 @@
+=== Original Module (With Bound Weights) ===
+def @main(%data: Tensor[(1, 64, 56, 56), float32]) {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0], padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]);
+  nn.relu(%0)
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %0 = nn.conv2d(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: MergeComposite, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: AnnotateTargetFunc, opt_level: 0, required passes: [
+InferType, ]
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: AnnotateTarget, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: MergeCompilerRegions, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: sequential, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: FlattenNestedTuples, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: RemoveDefaultAnnotations, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, global_symbol="dnnl_main_0", Primitive=1, Compiler="dnnl", Inline=1) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %3 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %4 = annotation.compiler_begin(meta[relay.Constant][1] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %5 = fn (%FunctionVar_0_0-malformed-ir, %FunctionVar_0_11: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %2 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_11, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%2) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %6 = %5(%3, %4) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%6, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, global_symbol="dnnl_main_0", Primitive=1, Compiler="dnnl", Inline=1) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: PartitionGraph, opt_level: 0, required passes: []
+
+def @dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, global_symbol="dnnl_main_0", Primitive=1, Compiler="dnnl", Inline=1) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: NameMangleExtFuncs, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @tvmgen_default_dnnl_main_0(%data)
+}
+
+def @tvmgen_default_dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, Compiler="dnnl", Primitive=1, Inline=1, global_symbol="tvmgen_default_dnnl_main_0") -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: InferType, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @tvmgen_default_dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @tvmgen_default_dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, Compiler="dnnl", Primitive=1, Inline=1, global_symbol="tvmgen_default_dnnl_main_0") -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: sequential, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @tvmgen_default_dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @tvmgen_default_dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, Compiler="dnnl", Primitive=1, Inline=1, global_symbol="tvmgen_default_dnnl_main_0") -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+After Running Pass: The meta data of the pass - pass name: sequential, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @tvmgen_default_dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @tvmgen_default_dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, Compiler="dnnl", Primitive=1, Inline=1, global_symbol="tvmgen_default_dnnl_main_0") -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+
+=== Partitioned Module ===
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @tvmgen_default_dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @tvmgen_default_dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, Compiler="dnnl", Primitive=1, Inline=1, global_symbol="tvmgen_default_dnnl_main_0") -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+
+Executing model on DNNL backend...
+Execution successful! Output shape: (1, 64, 56, 56)
+Sample output values (Should be non-zero now):
+ [ 80.55623  116.93178  119.88259  119.04214  114.850914]
