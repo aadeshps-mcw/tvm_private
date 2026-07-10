@@ -1,9 +1,8 @@
 import tvm
 from tvm import relay
-import tvm
-print("USING TVM FROM:", tvm.__file__)
 
 def main():
+    print("USING TVM FROM:", tvm.__file__)
     print("1. Creating TVM Relay graph for dilation2d...")
 
     data_shape = (1, 64, 32, 32)

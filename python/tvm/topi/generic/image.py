@@ -24,13 +24,16 @@ def _apply_adaptive_spatial_schedule(s, Out, outer_axes, tile_axis, tile_dim_len
     Unified scheduling logic that applies dynamic vector alignment 
     and spatial strip-mining for cache locality.
     """
+    if tile_dim_length <= 16:
+            return s
+
     # Dynamic Vector Width Alignment
-    if vec_dim_length % 8 == 0:
-        vec_width = 8
-    elif vec_dim_length % 4 == 0:
-        vec_width = 4
-    else:
-        vec_width = 1  # Unaligned boundary -> Fallback to scalar
+    vec_width = 1
+    if vec_dim_length >= 16:
+        if vec_dim_length % 8 == 0:
+            vec_width = 8
+        elif vec_dim_length % 4 == 0:
+            vec_width = 4
 
     vectorizable = vec_width > 1
     if vectorizable:
@@ -78,14 +81,17 @@ def _apply_adaptive_spatial_schedule(s, Out, outer_axes, tile_axis, tile_dim_len
 def schedule_dilation2d_nchw(outs):
     """Adaptive schedule for image.dilation2d, NCHW data layout."""
     outs = [outs] if isinstance(outs, te.tensor.Tensor) else outs
-    s = te.create_schedule([x.op for x in outs])
+    s = _default_schedule(outs, False)
     Out = outs[0]
 
     n, c, h, w = s[Out].op.axis
     ry, rx = s[Out].op.reduce_axis
 
-    out_h = get_const_int(Out.shape[2])
-    out_w = get_const_int(Out.shape[3])
+    try:
+         out_h = get_const_int(Out.shape[2])
+         out_w = get_const_int(Out.shape[3])
+    except ValueError:
+         return s
 
     # NCHW Role Mapping:
     # We fuse Batch & Channels (n, c)
@@ -103,14 +109,17 @@ def schedule_dilation2d_nchw(outs):
 def schedule_dilation2d_nhwc(outs):
     """Adaptive schedule for image.dilation2d, NHWC data layout."""
     outs = [outs] if isinstance(outs, te.tensor.Tensor) else outs
-    s = te.create_schedule([x.op for x in outs])
+    s = _default_schedule(outs, False)
     Out = outs[0]
 
     n, h, w, c = s[Out].op.axis
     ry, rx = s[Out].op.reduce_axis
 
-    out_w = get_const_int(Out.shape[2])
-    channels = get_const_int(Out.shape[3])
+    try:
+         out_w = get_const_int(Out.shape[2])
+         channels = get_const_int(Out.shape[3])
+    except ValueError:
+         return s
 
     # NHWC Role Mapping:
     # We fuse Batch & Height (n, h)
@@ -123,3 +132,30 @@ def schedule_dilation2d_nhwc(outs):
         red_axes=[ry, rx],
         vec_axis=c, vec_dim_length=channels
     )
+# def schedule_dilation2d_nchw(outs):
+#     """Schedule for dilation2d
+#     Parameters
+#     ----------
+#     outs : Array of Tensor
+#         The computation graph description of dilation2d
+#         in the format of an array of tensors.
+#     Returns
+#     -------
+#     sch : Schedule
+#         The computation schedule for the op.
+#     """
+#     return _default_schedule(outs, False)
+
+# def schedule_dilation2d_nhwc(outs):
+#     """Schedule for dilation2d
+#     Parameters
+#     ----------
+#     outs : Array of Tensor
+#         The computation graph description of dilation2d
+#         in the format of an array of tensors.
+#     Returns
+#     -------
+#     sch : Schedule
+#         The computation schedule for the op.
+#     """
+#     return _default_schedule(outs, False)
