@@ -51,11 +51,46 @@ Expr QnnSubtractCanonicalize(const Attrs& attrs, const Array<Expr>& new_args,
   auto lhs_axis = broadcast_attrs->lhs_axis;
   auto rhs_axis = broadcast_attrs->rhs_axis;
 
-  // TODO(shoubhik) - The lowering can be further optimized. Instead of inserting requantize in
-  // the start, we can insert requantize at the end if both input tensors have same qnn params. In
-  // that case, we can first subtract the tensors, add the zero point, and requantize at the end.
-  // This can be done in future.
+  // Fast path: if lhs and rhs already share identical qnn params (scale and
+  // zero_point), the zero points cancel out algebraically:
+  //
+  //   scale * (Q_a - zp) - scale * (Q_b - zp) = scale * (Q_a - Q_b)
+  //
+  // so we can subtract the raw quantized values directly (upcast to int32 to
+  // avoid overflow) and only requantize ONCE at the end, from lhs's scale
+  // into the output's qnn params -- instead of requantizing both operands
+  // up front into the output's params before subtracting. This avoids one
+  // full requantize op and avoids the extra rounding error introduced by
+  // rounding both operands independently before subtracting.
+  //
+  // IsEqualScalar only recognizes literal scalar constants, so this fast
+  // path naturally only fires for per-tensor quantization where both sides'
+  // scale/zero_point are equal compile-time constants. Per-channel
+  // quantization (tensor-valued scales) or differing params safely fall
+  // through to the general path below.
+  if (IsEqualScalar(args.lhs_scale, args.rhs_scale) &&
+      IsEqualScalar(args.lhs_zero_point, args.rhs_zero_point)) {
+    // Upcast both operands to int32 before subtracting, to avoid overflow
+    // (e.g. uint8 - uint8 can be negative, which doesn't fit back in uint8).
+    auto lhs_int32 = Cast(args.lhs, DataType::Int(32));
+    auto rhs_int32 = Cast(args.rhs, DataType::Int(32));
 
+    // Computes Q_a - Q_b directly; the shared zero_point has already
+    // cancelled out algebraically, so this result is expressed in
+    // (lhs_scale, zero_point=0).
+    auto diff = Subtract(lhs_int32, rhs_int32);
+
+    // Single requantize: from (lhs_scale, 0) to the output's qnn params.
+    auto zero_zp = MakeConstantScalar(DataType::Int(32), 0);
+    auto requantized_diff =
+        RequantizeOrUpcast(diff, args.lhs_scale, zero_zp, args.output_scale,
+                           args.output_zero_point, input_type.shape, lhs_axis);
+
+    return ConvertDtype(requantized_diff, input_type.dtype);
+  }
+
+  // General path (lhs/rhs qnn params differ):
+  //
   // Since the input qnn params can be different than output qnn params, we first requantize the
   // input tensors to the output qnn params. Then we call relay.subtract on the requantized inputs.
   // This subtraction results in extra subtraction of the output zero point. We further add
