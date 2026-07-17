@@ -89,8 +89,6 @@ Expr MakeQuantizedBatchMatmul(Expr x, Expr y, Expr x_zero_point, Expr y_zero_poi
 
 Expr BatchMatmulFirstTerm(const Expr& quantized_x, const Expr& quantized_y,
                           const BatchMatmulAttrs* attrs) {
-  ICHECK(attrs->transpose_a == false && attrs->transpose_b == true)
-      << "Currently qnn.batch_matmul only supports (transpose_a=false, transpose_b=true).";
   return MakeBatchMatmul(quantized_x, quantized_y, attrs->out_dtype, attrs->transpose_a,
                          attrs->transpose_b);
 }

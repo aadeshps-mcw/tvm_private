@@ -1,0 +1,109 @@
+After Running Pass: The meta data of the pass - pass name: MergeComposite, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%data, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+After Running Pass: The meta data of the pass - pass name: AnnotateTargetFunc, opt_level: 0, required passes: [
+InferType, ]
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+After Running Pass: The meta data of the pass - pass name: MergeCompilerRegions, opt_level: 0, required passes: []
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = annotation.compiler_begin(%data, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  %2 = annotation.compiler_begin(meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */, compiler="dnnl") /* ty=Tensor[(64, 64, 3, 3), float32] */;
+  %3 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %4 = %3(%1, %2) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+  annotation.compiler_end(%4, compiler="dnnl") /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+After Running Pass: The meta data of the pass - pass name: PartitionGraph, opt_level: 0, required passes: []
+
+def @dnnl_main_0(%dnnl_0_i0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, global_symbol="dnnl_main_0", Primitive=1, Compiler="dnnl", Inline=1) -> Tensor[(1, 64, 56, 56), float32] {
+  %1 = fn (%FunctionVar_0_0: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */, %FunctionVar_0_1: Tensor[(64, 64, 3, 3), float32] /* ty=Tensor[(64, 64, 3, 3), float32] */, PartitionedFromPattern="nn.conv2d_nn.relu_", Composite="dnnl.conv2d_relu") -> Tensor[(1, 64, 56, 56), float32] {
+    %0 = nn.conv2d(%FunctionVar_0_0, %FunctionVar_0_1, padding=[1, 1, 1, 1], channels=64, kernel_size=[3, 3]) /* ty=Tensor[(1, 64, 56, 56), float32] */;
+    nn.relu(%0) /* ty=Tensor[(1, 64, 56, 56), float32] */
+  } /* ty=fn (Tensor[(1, 64, 56, 56), float32], Tensor[(64, 64, 3, 3), float32]) -> Tensor[(1, 64, 56, 56), float32] */;
+  %1(%dnnl_0_i0, meta[relay.Constant][0] /* ty=Tensor[(64, 64, 3, 3), float32] */) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+def @main(%data: Tensor[(1, 64, 56, 56), float32] /* ty=Tensor[(1, 64, 56, 56), float32] */) -> Tensor[(1, 64, 56, 56), float32] {
+  @dnnl_main_0(%data) /* ty=Tensor[(1, 64, 56, 56), float32] */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+compiler_begin and compiler_end are explicit tracking markers placed directly on data tensors, not abstract borders drawn around code blocks.
+
+
+// 1. Instantiates the serializer using the function node and its global name
+DNNLJSONSerializer serializer(func_name, func);
+
+// 2. Traverses the graph, converting nodes like "dnnl.conv2d_relu" into JSON blocks
+serializer.serialize();
+
+// 3. Extracts the graph as a giant text string
+std::string graph_json = serializer.GetJSON();
+
+// 4. Extracts bound weight constants 
+auto params = serializer.GetParams();
+
+weights out for keeping json lightweight
+Intel’s DNNL engine needs to read weights directly from contiguous binary blocks of RAM so your CPU can execute AVX-512 or AMX vector instructions on them.
+
+By keeping params separate, TVM preserves the weights as raw binary arrays.
+
+If you host your model in a production server and run multiple inference instances simultaneously, you only need one copy of the static weights loaded into RAM.
+By keeping the execution graph (graph_json) and the model weights (params) decoupled, multiple runtime engine threads can share the exact same weight buffer in memory without duplication, saving massive amounts of system memory.
+
+
+Once compilation finishes, the Relay IR structures are completely destroyed. TVM needs a way to save the structural blueprint of your network inside the final compiled library file (like a .so or .tar file) so it can be reloaded later or deployed on a production server. A platform-agnostic text format like JSON is ideal for this storage.
+
+
+Intel's oneDNN (DNNL) library cannot execute a raw JSON text string directly. It is a C++ math library that requires native C++ objects to perform matrix multiplications.
+
+Serialization is done to freeze and save the model structure into a lightweight, portable text format when the compiler finishes its job.
+
+Deserialization is done to thaw and rebuild that structure into live C++ objects and raw memory pointers so that the CPU hardware can actually execute the math operations during an inference forward pass.

@@ -35,7 +35,15 @@
 
 // TODO(@apeskov): Have to mute warning from dnnl headers.
 //  -Wzero-as-null-pointer-constant and -Wdocumentation-unknown-command
-#include <dnnl.hpp>
+// #if defined(__clang__)
+// #pragma clang diagnostic push
+// #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+// #pragma clang diagnostic ignored "-Wdocumentation-unknown-command"
+// #endif
+#include "dnnl.hpp"
+// #if defined(__clang__)
+// #pragma clang diagnostic pop
+// #endif
 
 #include "dnnl_tensor_requisite.h"
 #include "dnnl_utils.h"
@@ -385,7 +393,7 @@ class DNNLJSONRuntime : public JSONRuntimeBase {
     auto sum_in_tr = GetInputByName(nid, "sum_idx").TreatAs(dst_layout);
     if (op_name.find("_sum") != std::string::npos) {
       sum_in_tr = GetInput(nid, node.GetInputs().size() - 1);
-      sum_in_tr = sum_in_tr.TreatAs(dst_layout);
+      sum_in_tr = sum_in_tr.RequestLayout(conv_prim_desc.dst_desc());
     }
 
     Submit(dnnl::convolution_forward(conv_prim_desc),
@@ -499,6 +507,14 @@ class DNNLJSONRuntime : public JSONRuntimeBase {
     auto sum_in_tr = GetInputByName(nid, "sum_idx");
     if (op_name.find("_sum") != std::string::npos) {
       sum_in_tr = GetInput(nid, node.GetInputs().size() - 1);
+    //   sum_in_tr = sum_in_tr.RequestLayout(conv_prim_desc.dst_desc());
+
+    //   // 2. Prevent Memory Aliasing Hazards
+    //   // The JSON runtime lacks graph visibility. We cannot statically prove if 
+    //   // `sum_in_tr` is consumed by another node later. Mutating it in-place 
+    //   // for the sum post-op risks corrupting downstream data.
+    //   // We MUST force a deep copy into a fresh buffer here. 
+    //   sum_in_tr = sum_in_tr.Clone(); // Or equivalent deep-copy method for TensorRequisite
     }
 
     Submit(dnnl::inner_product_forward(dense_prim_desc),
