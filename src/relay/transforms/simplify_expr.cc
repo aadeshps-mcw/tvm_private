@@ -276,13 +276,13 @@ class SimplifyClip : public DFPatternRewrite {
 
     // TODO(kfeng123): For now, the arg of "clip" is forced to not be "qnn.requantize" and
     // "qnn.add". This is to avoid destroying the structure required by LegalizeQnnOpForDnnl
-    auto child{post.as<CallNode>()->args[0].as<CallNode>()};
-    if (child && child->op.as<OpNode>()) {
-      String op_name{child->op.as<OpNode>()->name};
-      if (op_name == "qnn.requantize" || op_name == "qnn.add") {
-        return post;
-      }
-    }
+    // auto child{post.as<CallNode>()->args[0].as<CallNode>()};
+    // if (child && child->op.as<OpNode>()) {
+    //   String op_name{child->op.as<OpNode>()->name};
+    //   if (op_name == "qnn.requantize" || op_name == "qnn.add") {
+    //     return post;
+    //   }
+    // }
 
     if (CheckDataTypeMaxMinValue(cast_dtype, clip_attrs->a_min, clip_attrs->a_max)) {
       return node_map[x_][0];
