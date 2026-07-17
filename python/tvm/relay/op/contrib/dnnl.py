@@ -1231,7 +1231,7 @@ class LegalizeQnnOpForDnnl(DFPatternCallback):
         pat = is_op("qnn.requantize")(
             pat, self.rq_in_scl, self.rq_in_zp, self.rq_out_scl, self.rq_out_zp
         )
-        pat = is_op("clip")(pat)
+        pat = pat.optional(is_op("clip")) 
         cast = is_op("cast")(pat)
         pat = is_op("qnn.add")(
             cast,
@@ -1243,7 +1243,7 @@ class LegalizeQnnOpForDnnl(DFPatternCallback):
             self.sum_out_scl,
             self.sum_out_zp,
         )
-        pat = is_op("clip")(pat)
+        pat = pat.optional(is_op("clip")) 
         self.pattern = pat | cast
 
     def callback(self, pre, post, node_map):
