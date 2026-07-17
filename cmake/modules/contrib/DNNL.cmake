@@ -25,6 +25,10 @@ if(IS_DIRECTORY ${USE_DNNL})
     list(APPEND COMPILER_SRCS ${DNNL_CONTRIB_SRC})
 
     list(APPEND TVM_RUNTIME_LINKER_LIBS ${EXTERN_LIBRARY_DNNL})
+    # NOTE: mark DNNL's own headers as SYSTEM so third-party warnings
+    # (-Wzero-as-null-pointer-constant, -Wdocumentation-unknown-command, etc.)
+    # from dnnl.hpp are suppressed without needing per-file pragmas.
+    include_directories(SYSTEM ${USE_DNNL}/include)
     tvm_file_glob(GLOB DNNL_CONTRIB_SRC src/runtime/contrib/dnnl/dnnl_json_runtime.cc
                                         src/runtime/contrib/dnnl/dnnl_utils.cc
                                         src/runtime/contrib/dnnl/dnnl.cc
@@ -39,6 +43,11 @@ elseif((USE_DNNL STREQUAL "ON") OR (USE_DNNL STREQUAL "JSON"))
 
   find_library(EXTERN_LIBRARY_DNNL dnnl)
   list(APPEND TVM_RUNTIME_LINKER_LIBS ${EXTERN_LIBRARY_DNNL})
+  # NOTE: mark DNNL's own headers as SYSTEM so third-party warnings
+  # (-Wzero-as-null-pointer-constant, -Wdocumentation-unknown-command, etc.)
+  # from dnnl.hpp are suppressed without needing per-file pragmas.
+  get_filename_component(DNNL_LIB_DIR ${EXTERN_LIBRARY_DNNL} DIRECTORY)
+  include_directories(SYSTEM ${DNNL_LIB_DIR}/../include)
   tvm_file_glob(GLOB DNNL_CONTRIB_SRC src/runtime/contrib/dnnl/dnnl_json_runtime.cc
                                       src/runtime/contrib/dnnl/dnnl_utils.cc
                                       src/runtime/contrib/dnnl/dnnl.cc

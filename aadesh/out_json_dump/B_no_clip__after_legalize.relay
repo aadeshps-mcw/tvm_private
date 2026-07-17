@@ -1,0 +1,16 @@
+#[version = "0.0.5"]
+def @main(%src: Tensor[(1, 4, 8, 8), uint8] /* ty=Tensor[(1, 4, 8, 8), uint8] */) -> Tensor[(1, 4, 8, 8), uint8] {
+  %0 = qnn.conv2d(%src, meta[relay.Constant][0] /* ty=Tensor[(4, 4, 3, 3), int8] */, 0 /* ty=int32 */, 0 /* ty=int32 */, 1f /* ty=float32 */, 1f /* ty=float32 */, padding=[1, 1, 1, 1], channels=4, kernel_size=[3, 3], out_dtype="int32") /* ty=Tensor[(1, 4, 8, 8), int32] */;
+  %1 = cast(%0, dtype="float32") /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  %2 = add(%1, meta[relay.Constant][1] /* ty=Tensor[(4, 1, 1), float32] */) /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  %3 = multiply(%2, 0.5f /* ty=float32 */) /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  %4 = clip(%3, a_min=0f, a_max=255f) /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  %5 = multiply(%4, 1f /* ty=float32 */) /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  %6 = add(%5, 0f /* ty=float32 */) /* ty=Tensor[(1, 4, 8, 8), float32] */;
+  cast(%6, dtype="uint8") /* ty=Tensor[(1, 4, 8, 8), uint8] */
+}
+
+/* For debugging purposes the metadata section has been omitted.
+ * If you would like to see the full metadata section you can set the 
+ * option to `True` when invoking `astext`. 
+ */
