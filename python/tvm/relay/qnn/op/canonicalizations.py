@@ -78,39 +78,46 @@ def create_integer_lookup_table(
     if not np.issubdtype(np.dtype(in_dtype), np.integer) or not np.issubdtype(
         np.dtype(out_dtype), np.integer
     ):
-        raise ValueError(
-            f"Only integer dtypes allowed got {in_dtype} and {out_dtype} for in and out dtypes."
-        )
+        raise ValueError("Only integer dtypes allowed.")
 
-    dtype_info = np.iinfo(in_dtype)
+    num_bits = np.iinfo(in_dtype).bits
+    in_scale_np = input_scale.data.numpy()
+    
+    # Detect if quantization is per-channel
+    is_per_channel = len(in_scale_np.shape) > 0 and in_scale_np.shape[0] > 1
 
-    num_bits = dtype_info.bits
+    # Build 1D (256) or 2D (C, 256) base array
+    base_quantized = np.array(range(0, 2**num_bits), dtype=f"uint{num_bits}")
+    if is_per_channel:
+        num_channels = in_scale_np.shape[0]
+        inputs_quantized = np.tile(base_quantized, (num_channels, 1))
+        lut_axis = 0 # The channel dimension in our new 2D LUT
+    else:
+        inputs_quantized = base_quantized
+        lut_axis = in_axis
 
-    # Use TVMs quantization methods via relay to be consistent
-    # inputs_quantized = np.array(range(dtype_info.min, dtype_info.max + 1)).astype(in_dtype)
-
-    # First generate a list of all num_bit integer patterns
-    inputs_quantized = np.array(range(0, 2**num_bits), dtype=f"uint{num_bits}")
-
-    # Reinterpret bits as the real datatype
-    # Note what we are doing here is a bit tricky, the canonical view of our lookup table
-    # is using the uintX version. When we run the lookup in the relay graph, we cast the
-    # bit pattern back into this form.
     inputs_quantized = inputs_quantized.view(in_dtype)
     inputs_quantized = relay.const(inputs_quantized, dtype=in_dtype)
+    
+    # Process the table through the float function
     inputs_dequantized = run_const_expr(
         relay.qnn.op.dequantize(
             inputs_quantized,
             input_scale=input_scale,
             input_zero_point=input_zero_point,
-            axis=in_axis,
+            axis=lut_axis,
         )
     )
 
     output_dequantized = relay.const(floating_point_func(inputs_dequantized))
+    
     output_quantized = run_const_expr(
         relay.qnn.op.quantize(
-            output_dequantized, output_scale, output_zero_point, out_axis, out_dtype
+            output_dequantized, 
+            output_scale, 
+            output_zero_point, 
+            axis=lut_axis if is_per_channel else out_axis, 
+            out_dtype=out_dtype
         )
     )
 
@@ -129,47 +136,73 @@ def create_integer_lookup_op(
     in_dtype: str = "uint8",
     out_dtype: str = "uint8",
 ) -> "relay.Expr":
-    """
-    Create a quantized version of the given floating point unary operation using table lookup.
+    """Create a quantized version of the given floating point unary operation using table lookup."""
+    
+    in_scale_np = in_scale.data.numpy()
+    is_per_channel = len(in_scale_np.shape) > 0 and in_scale_np.shape[0] > 1
 
-    Args:
-      input_arg: The quantized input to the final function.
-      floating_point_func: The numpy function which this table is to approximate
-      in_scale: The scale of the quantized input tensor.
-      in_zero_point: The zero point of the quantized input tensor.
-      out_scale: The scale of the quantized output tensor.
-      out_zero_point: The zero point of the quantized output tensor.
-      in_axis: The axis for multi-channel quantization of the input if applicable.
-      out_axis: The axis for multi-channel quantization of the output if applicable.
-      in_dtype: The dtype of the input tensor.
-      out_dtype: The wanted dtype of the output tensor.
+    # Safely extract arrays without crashing on .item()
+    if is_per_channel:
+        in_s_val, in_zp_val = in_scale_np, in_zero_point.data.numpy()
+        out_s_val, out_zp_val = out_scale.data.numpy(), out_zero_point.data.numpy()
+    else:
+        in_s_val, in_zp_val = in_scale_np.item(), in_zero_point.data.numpy().item()
+        out_s_val, out_zp_val = out_scale.data.numpy().item(), out_zero_point.data.numpy().item()
 
-    Returns:
-      A Relay expression representing a quantized version of the given function.
-    """
-
-    # TODO: handle multi-channel q, below will fail with multi-channel q
-    in_scale = in_scale.data.numpy().item()
-    in_zero_point = in_zero_point.data.numpy().item()
-    out_scale = out_scale.data.numpy().item()
-    out_zero_point = out_zero_point.data.numpy().item()
-
+    # Generate the LUT (will be 2D if per-channel)
     lookup_table = create_integer_lookup_table(
         floating_point_func,
-        relay.const(in_scale),
-        relay.const(in_zero_point, dtype="int32"),
-        relay.const(out_scale),
-        relay.const(out_zero_point, dtype="int32"),
-        in_axis=in_axis,
-        in_dtype=in_dtype,
-        out_axis=out_axis,
-        out_dtype=out_dtype,
+        relay.const(in_s_val),
+        relay.const(in_zp_val, dtype="int32"),
+        relay.const(out_s_val),
+        relay.const(out_zp_val, dtype="int32"),
+        in_axis=in_axis, out_axis=out_axis,
+        in_dtype=in_dtype, out_dtype=out_dtype,
     )
 
-    in_dtype_info = np.iinfo(in_dtype)
-    in_dtype_num_bits = in_dtype_info.bits
-
-    lookup_table = relay.const(lookup_table)
+    in_dtype_num_bits = np.iinfo(in_dtype).bits
     index_tensor = relay.reinterpret(input_arg, f"uint{in_dtype_num_bits}")
-    result = relay.take(lookup_table, index_tensor, axis=0, mode="fast")
-    return result
+
+    # Apply the LUT
+    if not is_per_channel:
+        return relay.take(relay.const(lookup_table), index_tensor, axis=0, mode="fast")
+    else:
+        # Dynamically derive shape and rank from the Relay Expression
+        in_shape = None
+        try:
+            if input_arg.checked_type is not None:
+                in_shape = input_arg.checked_type.shape
+        except ValueError:
+            # Type checker hasn't run yet; safe to proceed to fallback
+            pass
+
+        if in_shape is None:
+            if hasattr(input_arg, "type_annotation") and input_arg.type_annotation is not None:
+                in_shape = input_arg.type_annotation.shape
+            else:
+                raise TypeError(
+                    "input_arg must have an inferred type or type annotation to resolve per-channel lookup shapes."
+                )
+            
+        # Convert TVM IntImm/tir values to python integers for calculation
+        in_shape = [int(dim) for dim in in_shape]
+        rank = len(in_shape)
+        # --------------------------------------------------------------------------
+
+        C = in_scale_np.shape[0]
+        
+        # Create offsets: [0, 256, 512, ...]
+        offsets = np.arange(C, dtype="int32") * (2 ** in_dtype_num_bits)
+        
+        # Reshape offsets to broadcast correctly across the input tensor (e.g. 1xCx1x1)
+        actual_axis = in_axis if in_axis >= 0 else rank + in_axis
+        offset_shape = [1] * rank
+        offset_shape[actual_axis] = C
+        offsets = offsets.reshape(offset_shape)
+        
+        # Add offsets to the tensor and do a flat 1D take
+        index_tensor_int32 = relay.cast(index_tensor, "int32")
+        shifted_indices = relay.add(index_tensor_int32, relay.const(offsets, dtype="int32"))
+        
+        flat_lookup_table = relay.const(lookup_table.flatten())
+        return relay.take(flat_lookup_table, shifted_indices, axis=0, mode="fast")
